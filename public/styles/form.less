@@ -1,0 +1,384 @@
+form {
+	height: auto;
+
+	// Basic Form Elements
+	// -------------------------
+	label {
+		color: @tf-black;
+		font-size: @font-size-small;
+		font-weight: bold;
+		margin: 0 0 @spacing-tiny @form-label-indentation;
+	}
+
+	select,
+	input,
+	textarea {
+		.border-radius(@main-border-radius);
+		position: relative;
+		width: 100%;
+		height: @form-field-height;
+		border: 1px solid @form-field-border;
+		font-size: @font-size-base;
+		padding: @spacing-tiny @spacing-small;
+		vertical-align: middle;
+		outline: none;
+
+		&:focus,
+		&.tf-focus {
+			border: 1px solid @form-field-border-hover;
+			.box-shadow(0 0 0 1px @form-field-border-hover);
+		}
+
+		&:hover:not(.tf-button) {
+			border: 1px solid @form-field-border-hover;
+
+			+ i {
+				color: @icon-hover-base;
+			}
+		}
+
+		&.right-aligned {
+			float: right;
+		}
+	}
+
+	input {
+		+ i {
+			position: relative;
+			right: @spacing-huge;
+			color: @tf-blue-logo;
+			font-size: @font-size-base;
+			line-height: @line-height-base;
+			width: 0;
+			vertical-align: middle;
+			pointer-events: none;
+
+			&:hover {
+				color: @icon-hover-base;
+			}
+		}
+
+		&.default {
+			height: auto;
+			display: inline-block !important;
+
+			+ label {
+				padding-left: 0 !important;
+
+				&:before {
+					display: none !important;
+				}
+			}
+
+			~ label {
+				padding-left: @spacing-tiny !important;
+			}
+
+			+ input[type=number] {
+				margin-left: @spacing-tiny;
+			}
+		}
+
+		&[type=submit],
+		&[type=checkbox]{
+			width: auto;
+			display: inline-block;
+			cursor: pointer;
+		}
+
+		&[type=checkbox]{
+			height: auto;
+		}
+
+		&[type=file] {
+			border: 0;
+			line-height: 0;
+			padding: 0;
+
+			&:hover,
+			&:active,
+			&:focus {
+				.box-shadow(0 0 0 0) !important;
+				border: 0;
+			}
+
+			// positioning of file upload error messages
+			&.error {
+				margin-bottom: @spacing-large;
+			}
+
+			+ .form-field-error {
+				bottom: -@spacing-colossal !important;
+			}
+		}
+
+		&[type=datepicker] {
+			cursor: pointer;
+		}
+	}
+
+	textarea {
+		height: 100px;
+		resize: none;
+	}
+
+	// Layout Elements
+	// ------------------------
+	.field-title {
+		color: @tf-black;
+		font-size: @font-size-h3;
+		font-weight: bold;
+		margin-bottom: @spacing-normal;
+		display: block;
+	}
+
+	> fieldset {
+		.perfect-box-spacing();
+		position: relative;
+		padding: 0 0 @spacing-small 0;
+
+		&.has-separator {
+			border-bottom: 1px solid @tf-blue-logo;
+		}
+
+		.mandatory-field {
+			position: absolute;
+			right: @spacing-base;
+			top: @spacing-base;
+			width: 50%;
+			display: inline-block;
+			font-size: @font-size-smaller;
+			text-align: right;
+		}
+
+		// Single Form Rows
+		.form-field-row {
+			.white-space-collapse();
+			margin-bottom: @spacing-small;
+			position: relative;
+
+			.field-description {
+				font-size: @font-size-base;
+
+				p {
+					margin-bottom: 0;
+				}
+			}
+
+			.form-field {
+				.generate-widths();
+				display: inline-block;
+				width: 50%;
+				vertical-align: top;
+
+				&.has-padding {
+					padding-right: @spacing-small;
+				}
+
+				// Keep in mind: error messages are positioned absolute below every .form-field (!)
+				&.error {
+					// 50px margin should be enough for error messages with only one line
+					margin-bottom: 50px;
+
+					// add any form field class in case the error message text starts to wrap!
+					&.form-field-date {
+						margin-bottom: 65px;
+
+						.form-field-error {
+							// we need to reduce font-size here since time period error messages are by default very long
+							font-size: @font-size-small;
+						}
+					}
+
+					i {
+						color: @icon-color-error;
+					}
+
+					input,
+					select,
+					textarea,
+					.tf-select-view {
+						border: 1px solid @form-field-border-error!important;
+
+						&:hover:not(.tf-button) {
+							border: 1px solid @form-field-border-error-hover;
+
+							+ i {
+								color: @icon-hover-error;
+							}
+						}
+
+						&:focus {
+							border: 1px solid @form-field-border-error-hover;
+							.box-shadow(0 0 0 1px @form-field-border-error-hover);
+						}
+					}
+				}
+			}
+
+			// Error Container
+			.form-field-error {
+				.border-radius(@main-border-radius);
+				border: 1px solid @form-field-border-error;
+				background: @tf-red-badass;
+				font-size: @font-size-small;
+				height: auto;
+				margin-top: @spacing-small;
+				padding: @spacing-small;
+
+				position: absolute;
+				left: 0;
+				right: 0;
+				bottom: 0;
+			}
+
+			//Note Container
+			.form-field-note {
+				font-size: @font-size-small;
+				padding: @spacing-small;
+				border: 1px solid @tf-yellow-logo;
+				border-radius: @main-border-radius;
+				background: @tf-yellow-badass;
+			}
+
+			// Notification/Alert Container
+			&.success-container,
+			&.error-container,
+			&.information-container {
+				.border-radius(@main-border-radius);
+				font-size: @font-size-base;
+				padding: @spacing-small;
+
+				i {
+					font-size: @icon-size-base;
+					margin-right: @spacing-tiny;
+					vertical-align: middle;
+				}
+
+				.message-title {
+					margin: 0;
+					font-weight: bold;
+					display: inline-block;
+				}
+
+				.message-content {
+					margin: @spacing-small 0 0 0;
+					font-weight: normal;
+				}
+			}
+
+			&.success-container {
+				border: 1px solid @tf-green-logo;
+				background: @tf-green-badass;
+				color: @tf-green-logo;
+			}
+
+			&.error-container {
+				border: 1px solid @tf-red-dark;
+				background: @tf-red-badass;
+				color: @tf-black;
+			}
+
+			&.information-container {
+				border: 1px solid @tf-grey1;
+				background: @tf-white;
+				color: @tf-black;
+			}
+		}
+	}
+
+	.submit-container {
+		padding: 0 @spacing-base @spacing-base @spacing-base;
+	}
+
+	// Favorite Form Element
+	// ------------------------
+	&.favorite {
+		outline: 0;
+
+		> button.icon-container {
+			.appearance(none);
+			border: none;
+			background: none;
+
+			&:focus {
+				outline: none;
+			}
+		}
+	}
+
+	@media @mobile {
+		select {
+			.appearance(none);
+			height: @form-field-height;
+			width: 100%;
+			color: @tf-black;
+			font-size: @font-size-base;
+		}
+
+		select,
+		input {
+			height: @form-field-height-mobile;
+		}
+
+		input {
+			+ i {
+				bottom: 18px;
+			}
+		}
+
+		> fieldset {
+			.mandatory-field {
+				position: relative;
+				right: auto;
+				top: auto;
+				width: 100%;
+				text-align: left;
+				margin-bottom: @spacing-small;
+			}
+
+			.form-field-row {
+				margin-bottom: 0;
+
+				.form-field {
+					margin-bottom: @spacing-normal;
+
+					&:not(.form-field-date) {
+						width: 100%;
+						padding-right: 0;
+					}
+				}
+
+				&.success-container,
+				&.error-container,
+				&.information-container {
+					margin-bottom: @spacing-small;
+
+					i {
+						position: absolute;
+						left: @spacing-small;
+						top: @spacing-small;
+					}
+
+					.message-title,
+					.message-content {
+						padding-left: @spacing-huge;
+					}
+				}
+
+				.form-field-note {
+					margin-bottom: @spacing-normal;
+				}
+			}
+		}
+
+		.submit-container {
+			width: 100%;
+		}
+
+		input[type=submit] {
+			display: block;
+			width: 100%;
+		}
+	}
+}

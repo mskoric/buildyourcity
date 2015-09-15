@@ -1,0 +1,19 @@
+{
+  "users":{
+    "count": 14200000,
+    "oldCount": 11200000
+  },
+  "inquiries":{
+    "count": 1700000,
+    "oldCount": 1200000
+  },
+  "hosts":{
+    "count": 23000,
+    "oldCount": 15000
+  },
+  "guests":{
+    "count": 29200000,
+    "oldCount": 22200000
+  },
+  "year": 2014
+}

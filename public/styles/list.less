@@ -1,0 +1,144 @@
+ul.tf-check-list {
+	li {
+		&:not(last-of-type) {
+			margin-bottom: @spacing-large;
+		}
+
+		&:before {
+			content: '\f05d';
+			font-family: FontAwesome;
+			color: @tf-green-logo;
+			font-size: @font-size-h1;
+			margin-right: @spacing-small;
+		}
+	}
+}
+
+.tf-list {
+	.border-radius(@main-border-radius);
+	.transition(all 200ms ease-out);
+	width: 100%;
+	border: 1px solid @tf-blue-logo;
+	height: auto;
+	overflow: hidden;
+	background-color: @tf-blue-badass;
+
+	h3 {
+		.truncate();
+		margin: 0;
+		padding: @spacing-small;
+		color: @tf-white;
+		background-color: @tf-blue-logo;
+		font-size: @font-size-base;
+	}
+
+	ul {
+		overflow: hidden;
+		margin: 0;
+		padding: 0;
+
+		li {
+			a {
+				padding: @spacing-small @spacing-small;
+				color: @tf-blue3;
+				display: block;
+
+				span:last-of-type {
+					float: right;
+				}
+			}
+
+			&:first-of-type a {
+				padding-top: @spacing-normal;
+			}
+
+			&:last-of-type a {
+				padding-bottom: @spacing-normal;
+			}
+
+			&:hover {
+				background: @tf-blue1;
+				a {
+					text-decoration: none;
+				}
+			}
+		}
+	}
+
+	@media @mobile {
+		margin-bottom: @spacing-large;
+
+		ul {
+			max-height: 100%;
+
+			li {
+				&:hover {
+					background: transparent;
+				}
+
+				&:active {
+					background: @tf-blue1;
+				}
+			}
+		}
+	}
+}
+
+// Lists with Icon
+// --------------------
+ul.content-icon-list {
+	position: relative;
+
+	@iconSize_xl: 35px;
+	@fontSize_xl: 23px;
+
+	@iconSize_sl: 25px;
+	@fontSize_sl: 16px;
+
+	.createIconListItem(@spacing-huge, 50px, @iconSize_xl, @fontSize_xl);
+
+	&.small {
+		.createIconListItem(@spacing-huge, 40px, @iconSize_sl, @fontSize_sl);
+	}
+
+	&.check li:before {
+		content: @ff-check;
+	}
+
+	&.question li:before {
+		content: @ff-question-circle;
+	}
+
+	@media @mobile {
+		* {
+			text-align: left;
+		}
+	}
+}
+
+.createIconListItem(@spacingBottom: @spacing-huge, @spacingRight: 50px, @iconSize: 35px, @fontSize: 23px) {
+	li {
+		margin-bottom: @spacingBottom;
+
+		*:not(strong) {
+			display: block;
+			margin: 0 0 0 @spacingRight;
+			font-size: @font-size-base;
+		}
+
+		&:before {
+			.border-radius(@main-border-radius);
+			font-family: FontFare;
+			content: @ff-check;
+			color: @tf-white;
+			background: @tf-blue3;
+			font-size: @fontSize;
+			width: @iconSize;
+			height: @iconSize;
+			line-height: @iconSize;
+			margin: 3px 0 0 0;
+			text-align: center;
+			float: left;
+		}
+	}
+}

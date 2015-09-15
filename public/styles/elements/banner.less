@@ -1,0 +1,253 @@
+.banner {
+	.border-radius(@main-border-radius);
+	position: relative;
+	overflow: hidden;
+	border: 1px solid @tf-blue-logo;
+	background-position: bottom;
+	background-repeat: no-repeat;
+	background-size: cover;
+	margin-bottom: @spacing-huge;
+	height: 150px;
+
+	img {
+		height: 100%;
+		width: 100%;
+	}
+
+	.window {
+		.border-radius(@main-border-radius+1);
+		position: absolute;
+		top: @spacing-normal;
+		right: @spacing-normal;
+		padding: @spacing-normal;
+		border: 1px solid @tf-blue-logo;
+		background: fade(@tf-white, 80%);
+
+		h3 {
+			margin: 0;
+			margin-bottom: @spacing-small;
+			font-size: @font-size-base;
+			position: relative;
+
+			span {
+				font-size: @font-size-tiny;
+
+				&.star {
+					position: absolute;
+					right: @spacing-small;
+					top: 0;
+				}
+			}
+		}
+
+		ul {
+			margin-left: 70px;
+			margin-bottom: 0;
+
+			li {
+				font-size: @font-size-small;
+				margin-bottom: @spacing-tiny;
+
+				&:last-of-type {
+					margin-bottom: 0;
+				}
+			}
+		}
+
+		img {
+			position: absolute;
+			left: 0;
+			bottom: 0;
+		}
+	}
+
+	&.index {
+		.window {
+			background: fade(@tf-white, 80%) url('/images/pfeile.png') no-repeat -2px 35px;
+		}
+	}
+
+	&.prices {
+		.window {
+			h3 {
+				margin-bottom: @spacing-tiny;
+			}
+
+			p {
+				font-size: @font-size-small;
+				margin-bottom: @spacing-small;
+			}
+
+			ul {
+				margin-left: 0;
+
+				li {
+					position: relative;
+					margin-bottom: @spacing-tiny;
+
+					&:last-of-type {
+						margin-bottom: 0;
+					}
+
+					strong,
+					span {
+						position: relative;
+						bottom: -2px;
+					}
+
+					span {
+						position: relative;
+						padding-left: @spacing-tiny;
+						float: right;
+					}
+				}
+			}
+		}
+	}
+
+	&.join {
+		overflow: visible;
+
+		.window {
+			@arrowTrunkHeight: 65px;
+			@arrowTrunkWidth: 40px;
+			@arrowTriangleHeight: 30px;
+			@arrowTriangleWidth: 36px;
+
+			padding: @spacing-base;
+			top: @spacing-base;
+			left: @spacing-base;
+			right: @spacing-base;
+
+			//arrow down
+			&:before,
+			&:after {
+				content: '';
+				position: absolute;
+				left: 50%;
+			}
+
+			&:before {
+				width: @arrowTrunkWidth;
+				height: @arrowTrunkHeight;
+				background: @tf-blue3;
+				margin-left: -@arrowTrunkWidth/2;
+				bottom: -@arrowTrunkHeight;
+			}
+			&:after {
+				width: 0;
+				height: 0;
+				border-style: solid;
+				margin-left: -@arrowTriangleWidth;
+				bottom: -(@arrowTrunkHeight + @arrowTriangleHeight);
+				border-width: @arrowTriangleHeight @arrowTriangleWidth 0 @arrowTriangleWidth;
+				border-color: @tf-blue3  rgba(0, 0, 0, 0)  rgba(0, 0, 0, 0)  rgba(0, 0, 0, 0);
+				// for smoot Firefox edges
+				-moz-transform: scale(.9999);
+			}
+
+			ul {
+				.white-space-collapse();
+				margin: 0;
+
+				li {
+					display: inline-block;
+					width: 33.33333333333333%;
+					margin: 0;
+
+					&:last-of-type {
+						text-align: right;
+
+						span {
+							text-align: left;
+						}
+					}
+
+					&:before {
+						.border-radius(@main-border-radius);
+						font-family: FontAwesome;
+						color: @tf-white;
+						background: @tf-blue3;
+						font-size: 24px;
+						width: 35px;
+						height: 35px;
+						line-height: 35px;
+						text-align: center;
+						display: inline-block;
+						font-weight: bold;
+						vertical-align: top;
+					}
+
+					span {
+						padding-left: @spacing-small;
+						display: inline-block;
+						width: 70%;
+						height: 35px;
+						vertical-align: middle;
+						font-size: 13px;
+						font-weight: bold;
+					}
+
+					&:nth-of-type(1):before {
+						font-family: @font-family-main;
+						content: '1';
+					}
+					&:nth-of-type(2):before {
+						font-family: @font-family-main;
+						content: '2';
+					}
+					&:nth-of-type(3):before {
+						font-family: @font-family-main;
+						content: '3';
+					}
+				}
+			}
+		}
+	}
+
+	&.feedback {
+		.window {
+			width: 60%;
+			padding: @spacing-small;
+
+			* {
+				text-align: center;
+			}
+
+			h3 {
+				margin-bottom: @spacing-tiny;
+			}
+
+			p {
+				margin: 0;
+				font-size: @font-size-small;
+			}
+
+			ul {
+				margin: 0 @spacing-colossal;
+				.white-space-collapse();
+
+				li {
+					display: inline-block;
+					width: 20%;
+
+					i {
+						color: @tf-yellow-logo;
+						font-size: 30px;
+						margin-bottom: 0;
+					}
+
+					&:first-of-type i,
+					&:last-of-type i {
+						font-size: 25px;
+					}
+
+					&:nth-of-type(2) i,
+					&:nth-of-type(4) i {
+						font-size: 27px;
+					}
+				}
+			}
+		}
+	}
+}

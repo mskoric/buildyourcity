@@ -1,0 +1,36 @@
+.faq {
+	overflow: hidden;
+
+	h2,
+	h3 {
+		font-size: @font-size-base;
+	}
+
+	ul li p img {
+		float: right;
+		margin: 0 0 @spacing-normal @spacing-normal;
+		height: 110px;
+		width: auto;
+	}
+
+	@media @mobile {
+		margin-bottom: @spacing-large;
+		border: 0 !important;
+
+		ul li p img {
+			margin-top: @spacing-large;
+			display: block;
+			float: none;
+		}
+
+		h2, h3 {
+			text-align: left;
+		}
+
+		a.tf-button {
+			display: block;
+			float: none;
+			text-align: center;
+		}
+	}
+}

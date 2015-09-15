@@ -1,0 +1,364 @@
+.border-box() {
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+}
+
+.content-box() {
+	-webkit-box-sizing: content-box;
+	-moz-box-sizing: content-box;
+	box-sizing: content-box;
+}
+
+.unselectable() {
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	user-select: none;
+}
+
+.appearance(@appearance) {
+	-webkit-appearance: @appearance;
+	-ms-appearance: @appearance;
+	-o-appearance: @appearance;
+	appearance: @appearance;
+}
+
+.top(@points) {
+	top: @points;
+}
+
+.border-radius(@radius: @main-border-radius) {
+	-webkit-border-radius: @radius;
+	-moz-border-radius: @radius;
+	border-radius: @radius;
+}
+
+.linear-gradient(@start, @end, @colorstart, @colorend) {
+	background-image: -webkit-gradient(linear, @start, @end, from(@colorstart), to(@colorend));
+	background-image: -webkit-linear-gradient(@start, @colorstart, @colorend);
+	background-image: -moz-linear-gradient(@start, @colorstart, @colorend);
+	background-image: -ms-linear-gradient(@start, @colorstart, @colorend);
+	background-image: -o-linear-gradient(@start, @colorstart, @colorend);
+	background-image: linear-gradient(@start, @colorstart, @colorend);
+}
+
+.horizontal-gradient (@startColor: @tf-grey2, @endColor: @tf-white) {
+	background-color: @startColor;
+	background-image: -webkit-gradient(linear, left top, right top, from(@startColor), to(@endColor));
+	background-image: -webkit-linear-gradient(left, @startColor, @endColor);
+	background-image: -moz-linear-gradient(left, @startColor, @endColor);
+	background-image: -ms-linear-gradient(left, @startColor, @endColor);
+	background-image: -o-linear-gradient(left, @startColor, @endColor);
+}
+
+.opacity(@opacity: 1) {
+	-webkit-opacity: @opacity;
+	-moz-opacity: @opacity;
+	opacity: @opacity;
+}
+
+.greyscale(@value: 1) {
+	-webkit-filter: grayscale(@value);
+	-moz-filter: grayscale(@value);
+	-o-filter: grayscale(@value);
+	-ms-filter: grayscale(@value);
+	filter: grayscale(@value);
+}
+
+.box-shadow(@args: @default-shadow) {
+	-webkit-box-shadow: @args;
+	-moz-box-shadow: @args;
+	box-shadow: @args;
+}
+
+.text-shadow(@args: @default-shadow) {
+	text-shadow: @args;
+}
+
+.double-box-shadow(@shadow1, @shadow2) {
+	-webkit-box-shadow: @shadow1, @shadow2;
+	-moz-box-shadow: @shadow1, @shadow2;
+	box-shadow: @shadow1, @shadow2;
+}
+
+.placeholder(@color) {
+	&::-webkit-input-placeholder {
+		color: @color;
+		opacity: 1;
+	}
+	&:-moz-placeholder {    //Firefox 18-
+		color: @color;
+		opacity: 1;
+	}
+	&::-moz-placeholder {    //Firefox 19+
+		color: @color;
+		opacity: 1;
+	}
+	&:-ms-input-placeholder {    //Firefox 18-
+		color: @color;
+		opacity: 1;
+	}
+}
+
+.rotation(@deg:5deg){
+	.transform(rotate(@deg));
+}
+
+.scale(@ratio:1.5){
+	.transform(scale(@ratio));
+}
+
+.transform(...) {
+	-webkit-transform: @arguments;
+	-moz-transform: @arguments;
+	-o-transform: @arguments;
+	transform: @arguments;
+}
+
+.transition(@args) {
+	-webkit-transition: @args;
+	-moz-transition: @args;
+	-o-transition: @args;
+	transition: @args;
+}
+
+.transition(@type: all @transition-base linear, @delay: none) {
+	-webkit-transition: @type;
+	-moz-transition: @type;
+	-o-transition: @type;
+	transition: @type;
+	transition-delay: @delay;
+	-webkit-transition-delay: @delay;
+}
+
+.transition-duration(@duration: @transition-base) {
+	-webkit-transition-duration: @duration;
+	-moz-transition-duration: @duration;
+	-o-transition-duration: @duration;
+	transition-duration: @duration;
+}
+
+.transform-origion(@x: 50%) {
+	-webkit-transform-origin: @x;
+	-moz-transform-origin: @x;
+	-ms-transform-origin: @x;
+	-o-transform-origin: @x;
+	transform-origin: @x;
+}
+
+.animate(@arguments) {
+	-webkit-animation: @arguments;
+	-moz-animation: @arguments;
+	-o-animation: @arguments;
+	animation: @arguments;
+}
+
+.font-outline(@weight: 1px, @color: rgba(255, 255, 255, 0.5)) {
+	text-shadow:
+		-@weight -@weight 0 @color,
+		@weight -@weight 0 @color,
+	-@weight @weight 0 @color,
+	@weight @weight 0 @color;
+}
+
+.hex-to-rgba(@color: @tf-white, @alpha: 1) {
+	background: hsla(hue(@color), saturation(@color), lightness(@color), @alpha);
+}
+
+/**
+ * Formats text to single line,
+ * truncates it and adds '...'
+ */
+.truncate(@width: 100%) {
+	width: @width;
+	white-space: nowrap;
+	overflow-x: hidden;
+	text-overflow: ellipsis;
+	&::-webkit-scrollbar {
+		display: none;
+	}
+}
+
+.hide-text() {
+	display: inline-block;
+	text-indent: 100%;
+	white-space: nowrap;
+	overflow: hidden;
+}
+
+/**
+* HasLayout
+*
+* Gives the element has-layout in IE. By switching to inline-block
+* it will make the element haslayout, then we just switch it back.
+* Alternatives are: zoom:1; overflow:anything; (IE7+), float, position:absolute;
+*
+* @see http://www.satzansatz.de/cssd/onhavinglayout.html
+* @type Mixin
+*/
+.has-layout() {
+	zoom: 1;
+}
+
+/**
+* Clearfix
+*
+* Clears an element of its floated children.
+*
+* @type Mixin
+*/
+.clearfix() {
+	.has-layout();
+	display:block;
+
+	&:after {
+		content: '\\0020';
+		display: block;
+		height: 0;
+		clear: both;
+		visibility: hidden;
+		overflow: hidden;
+		font-size: 0;
+	}
+}
+
+/**
+* Sadly needed for several elements using display:inline-block, so the browser does not allocate space for
+* crlf and other invisible characters. Reference: http://css-tricks.com/fighting-the-space-between-inline-block-elements/ http://davidwalsh.name/remove-whitespace-inline-block
+*/
+.white-space-collapse() {
+	font-size: 0;
+}
+
+.calendar-gradient (@startcolor, @endcolor) {
+	background-image: -webkit-linear-gradient(right bottom, @startcolor 50%, @endcolor 50%);
+	background-image: -moz-linear-gradient(right bottom, @startcolor 50%, @endcolor 50%);
+	background-image: -ms-linear-gradient(right bottom, @startcolor 50%, @endcolor 50%);
+	background-image: -o-linear-gradient(right bottom, @startcolor 50%, @endcolor 50%);
+}
+
+// fake dented border below element
+.dented-border() {
+	border-bottom: 1px solid @tf-blue1;
+
+	&:after {
+		content: "";
+		position: absolute;
+		display: block;
+		width: 100%;
+		height: 1px;
+		background: @tf-white;
+		bottom: -2px;
+		left: 0px;
+	}
+}
+
+.background-size(@type: cover) {
+	-webkit-background-size: @type;
+	-moz-background-size: @type;
+	-o-background-size: @type;
+	background-size: @type;
+}
+
+.matrixTranslate(@x, @y, @z) {
+	-webkit-transform: translate3d(@x, @y, @z);
+	-moz-transform: translate3d(@x, @y, @z);
+	-ms-transform: translate3d(@x, @y, @z);
+	transform: translate3d(@x, @y, @z);
+}
+
+.mobile-margin-fix() {
+	margin: 0px -@spacing-large;
+}
+
+.mobile-padding-fix() {
+	padding: 0px @spacing-large;
+}
+
+.loader-generator(@size: 33px) {
+	position: relative;
+	height: @size;
+	width: @size;
+}
+
+.perfect-center() {
+	position: absolute;
+	left: 50% !important;
+	top: 50% !important;
+	.transform(translate(-50%, -50%));
+}
+
+// Remove margins from first and last element for perfect spacing inside a box
+.perfect-box-spacing {
+	> *:first-child {
+		margin-top: 0 !important;
+	}
+
+	> *:last-child {
+		margin-bottom: 0 !important;
+	}
+}
+
+.reset-checkbox() {
+	-webkit-appearance: checkbox !important;
+	-moz-appearance: checkbox !important;
+	-ms-appearance: checkbox !important;
+	-o-appearance: checkbox !important;
+	appearance: checkbox !important;
+}
+
+.font-smoothing() {
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+	text-rendering: optimizelegibility;
+}
+
+.generate-widths() {
+	&.invisible {
+		opacity: 0;
+	}
+
+	&.full {
+		width: 100%;
+	}
+
+	&.small {
+		width: 28%;
+	}
+
+	&.big {
+		width: 72%;
+	}
+
+	&.smaller {
+		width: 14%;
+	}
+
+	&.bigger {
+		width: 86%;
+	}
+
+	&.has-margin-bottom {
+		margin-bottom: @spacing-base;
+		&.field-title {
+			margin-bottom: @spacing-small;
+		}
+	}
+
+	&.has-margin-top {
+		margin-top: @spacing-base;
+	}
+}
+
+.print-color-adjust() {
+	-moz-print-color-adjust: exact;
+	-ms-print-color-adjust: exact;
+	-o-print-color-adjust: exact;
+	-webkit-print-color-adjust: exact;
+	print-color-adjust: exact;
+}
+
+.h4-information() {
+	margin:  @spacing-small 0 0  @spacing-small;
+	display: block;
+}

@@ -1,0 +1,22 @@
+{% import "/macros/form.twig" as form %}
+<div class="box has-margin-bottom">
+    <h4>Vermieter Login</h4>
+    <form method="post">
+        <fieldset>
+            {{ form.input('text', 'username', null, 'Benutzername') }}
+        </fieldset>
+        <fieldset>
+            {{ form.input('password', 'password', null, 'Passwort') }}
+        </fieldset>
+        <fieldset>
+            <label>
+                {{ form.input('checkbox', 'stay-logged', '1', null, null, 'checked=checked') }}
+                Angemeldet bleiben
+            </label>
+        </fieldset>
+        <fieldset>
+            {{ form.input('submit', 'submit', 'Login', null, 'tf-button large') }}
+            <a href="#">Passwort  vergessen?</a>
+        </fieldset>
+    </form>
+</div>

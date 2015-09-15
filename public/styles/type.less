@@ -1,0 +1,192 @@
+//
+// Type
+// --------------------------------------------------
+
+
+html {
+	-webkit-tap-highlight-color: rgba(0,0,0,0);
+}
+
+
+// Body Appearance
+// -------------------------
+body {
+	.font-smoothing();
+	font-family: @font-family-main;
+	//line-height: @line-height-base;
+	color: @font-color-main;
+	background-color: @tf-grey-superlight;
+	font-size: @font-size-base;
+	clear: both;
+}
+
+@media @mobile {
+	body {
+		.matrixTranslate(0%, 0%, 0%);
+		font-size: @font-size-small;
+		background-color: @tf-white;
+	}
+}
+@media print {
+	body {
+		.print-color-adjust();
+	}
+}
+
+// Headings
+// -------------------------
+h1, .h1 { font-size: @font-size-h1; }
+h2, .h2 { font-size: @font-size-h2; }
+h3, .h3 { font-size: @font-size-h3; }
+h4, .h4 { font-size: @font-size-h4; }
+h5, .h5 { font-size: @font-size-h5; }
+h6, .h6 { font-size: @font-size-h6; }
+
+h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
+	font-family: @headings-font-family;
+	font-weight: @headings-font-weight;
+	line-height: @headings-line-height;
+	color: 		 @headings-color;
+}
+
+h1, h2, h3, .h1, .h2, .h3 {
+	margin-top: @line-height-computed;
+	margin-bottom: (@line-height-computed / 2);
+}
+
+h4, h5, h6, .h4, .h5, .h6 {
+	margin-top: (@line-height-computed / 2);
+	margin-bottom: (@line-height-computed / 2);
+}
+
+@media @mobile {
+	h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
+		text-align: center;
+		padding: 0;
+	}
+
+	@shrink-factor: 0.9;
+
+	h1, .h1 { font-size: floor(@font-size-h1 * @shrink-factor); }
+	h2, .h2 { font-size: floor(@font-size-h2 * @shrink-factor); }
+	h3, .h3 { font-size: floor(@font-size-h3 * @shrink-factor); }
+	h4, .h4 { font-size: floor(@font-size-h4); }
+	h5, .h5 { font-size: floor(@font-size-h5); }
+	h6, .h6 { font-size: floor(@font-size-h6); }
+}
+
+
+// Links
+// -------------------------
+a {
+	color: @link-color;
+	text-decoration: none;
+
+	&:hover,
+	&:focus {
+		color: @link-hover-color;
+		text-decoration: underline;
+	}
+}
+
+
+// Lists
+// -------------------------
+ul, ol {
+	list-style: none;
+	margin-top: 0;
+	margin-bottom: (@line-height-computed / 2);
+	padding: 0;
+
+	ul, ol {
+		margin-bottom: 0;
+	}
+
+	&.decimal {
+		list-style-type: decimal;
+		list-style-position: inside;
+
+		li {
+			margin-bottom: @spacing-tiny;
+
+			&:last-of-type {
+				margin-bottom: @spacing-base;
+			}
+		}
+	}
+}
+
+ul.classic {
+	list-style-type: initial;
+	list-style-image: initial;
+	list-style-position: inside;
+
+	li {
+		display: list-item;
+	}
+}
+
+ol.classic {
+	list-style: decimal;
+	padding-left: @spacing-base;
+
+	li {
+		display: list-item;
+		list-style-position: inside;
+		margin-bottom: @spacing-small;
+	}
+}
+
+// Fieldsets
+// -------------------------
+fieldset {
+	border: 0;
+	margin: 0;
+	padding: 0;
+	vertical-align: top;
+}
+
+
+// Buttons, Inputs
+// -------------------------
+// overrides extra padding in Firefox
+
+input::-moz-focus-inner {
+	padding:0;
+	border:0;
+}
+
+input {
+	@media @mobile {
+		// prevent device specific rendering
+		-webkit-appearance: none;
+		-moz-appearance: none;
+	}
+}
+
+
+// Paragraphs
+// -------------------------
+p {
+	margin: 0 0 @spacing-normal 0;
+	line-height: @line-height-base;
+
+	@media @mobile {
+		line-height: 20px;
+	}
+}
+
+
+// Horizontal Rule
+// -------------------------
+hr {
+	border: 0;
+	height: 1px;
+	background: @tf-grey3;
+}
+
+// Centered Element
+.tf-center {
+	margin: 0 auto;
+	display: inherit;
+}

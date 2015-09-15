@@ -1,0 +1,3 @@
+{% macro input(type, name, value, placeholder, class, attribute) %}
+    <input type="{{ type|default('text') }}" name="{{ name }}"{% if value %} value="{{ value|e }}"{% endif %}{% if placeholder %} placeholder="{{ placeholder|default() }}"{% endif %}{% if class %} class="{{ class|default() }}"{% endif %} {{ attribute }}/>
+{% endmacro %}

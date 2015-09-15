@@ -1,0 +1,29 @@
+@ff-font-path:	'../font-fare/fonts';
+@ff-css-prefix: ff;
+@ff-version: 'v2.1';
+
+@import '../font-fare/less/variables.less';
+@import '../font-fare/less/icons.less';
+
+@font-face {
+	font-family: 'FontFare';
+	src: url('@{ff-font-path}/fontfare.eot'),
+	url('@{ff-font-path}/fontfare.woff') format('woff'),
+	url('@{ff-font-path}/fontfare.ttf') format('truetype'),
+	url('@{ff-font-path}/fontfare.svg') format('svg');
+	font-weight: normal;
+	font-style: normal;
+}
+
+// Icon Settings
+// -------------------------
+.@{ff-css-prefix} {
+	.font-smoothing();
+	font-family: 'FontFare';
+	display: inline-block;
+	font-style: normal;
+	font-weight: normal;
+	font-variant: normal;
+	text-transform: none;
+	line-height: 1;
+}

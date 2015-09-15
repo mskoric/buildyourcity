@@ -1,0 +1,24 @@
+{% extends 'skeleton.twig' %}
+
+{% block head %}
+    {% include 'head.twig' with {'site': attributes.site, 'title': attributes.title} %}
+{% endblock head %}
+
+{% block content %}
+
+{% include 'elements/navigation.twig' with {'site': attributes.site} %}
+
+<div class="row">
+    <div class="eight cols">
+        {% include 'elements/main_information.twig' %}
+        {% include 'elements/copyright.twig' %}
+    </div>
+    <div class="four cols">
+        {% include 'elements/arguments.twig' %}
+        {% include 'elements/login.twig' %}
+        {% include 'elements/known_from.twig' %}
+        {% include 'elements/contact.twig' %}
+    </div>
+</div>
+
+{% endblock content %}

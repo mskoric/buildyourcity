@@ -1,0 +1,161 @@
+//
+// Utility classes
+// --------------------------------------------------
+
+
+.hidden {
+	display: none !important;
+	visibility: hidden !important;
+}
+
+.show {
+	display: block !important;
+	visibility: visible !important;
+}
+
+.no-scroll {
+	overflow-y: scroll;
+	position: fixed;
+	width: 100%;
+	background: @tf-white; // fixes Chrome v44 glitch with more than one positioned fixed content
+}
+
+// responsive utilities
+.hide-on-desktop {
+	@media @desktop-sm {
+		display: none !important;
+	}
+}
+.hide-on-tablet {
+	@media @tablet {
+		display: none !important;
+	}
+}
+.hide-on-mobile {
+	@media @mobile {
+		display: none !important;
+	}
+}
+.hide-on-portables {
+	@media @tablet, @mobile {
+		display: none !important;
+	}
+}
+.hide-on-print{
+	@media print {
+		display: none !important;
+	}
+}
+
+h1, h2, h3, h4, h5, h6 {
+	&.small {
+		font-weight: normal;
+		line-height: 1;
+		margin-top: @line-height-computed;
+	}
+
+	&.center {
+		text-align: center;
+	}
+
+	&.no-heading-margin {
+		margin-top:@no-heading-margin;
+	}
+}
+
+.pull-left {
+	float: left;
+}
+
+.pull-right {
+	float: right;
+}
+
+.pull-up {
+	margin-top: 0;
+}
+
+.text-center {
+	text-align: center;
+}
+
+.text-left {
+	text-align: left;
+}
+
+.text-right {
+	text-align: right;
+}
+
+.muted {
+	font-size: @font-size-tiny;
+	color: @tf-grey4;
+}
+
+.show-on-desktop {
+	@media @desktop-sm { display: inline-block !important; }
+	@media @tablet { display: none !important; }
+	@media @mobile { display: none !important; }
+}
+.show-on-tablet {
+	@media @desktop-sm { display: none !important; }
+	@media @tablet { display: inline-block !important; }
+	@media @mobile { display: none !important; }
+	@media print { display: none !important; }
+}
+.show-on-mobile {
+	@media @desktop-sm { display: none !important; }
+	@media @tablet { display: none !important; }
+	@media @mobile { display: inline-block !important; }
+	@media print { display: none !important; }
+
+}
+.show-on-portables {
+	@media @tablet, @mobile {
+		@media @desktop-sm { display: none !important; }
+		@media print { display: none !important; }
+	}
+}
+
+#mediaquery{
+	height: 0;
+	-webkit-transition: width .001s;
+	-moz-transition: width .001s;
+	-ms-transition: width .001s;
+	-o-transition: width .001s;
+	transition: width .001s;
+}
+
+#mediaquery:after {
+	content: "desktop-sm";
+	//display: none;
+	//TODO remove workaround when google fixes the issue
+	//http://code.google.com/p/chromium/issues/detail?id=341120
+	visibility: hidden;
+	font-size: 0;
+}
+
+@media @desktop-sm {
+	#mediaquery {
+		width: 10px;
+	}
+	#mediaquery:after {
+		content: "desktop-sm";
+	}
+}
+@media @tablet {
+	#mediaquery {
+		width: 20px;
+	}
+	#mediaquery:after {
+		content: "tablet";
+	}
+}
+@media @mobile {
+	#mediaquery {
+		width: 30px;
+	}
+	#mediaquery:after {
+		content: "mobile";
+	}
+}

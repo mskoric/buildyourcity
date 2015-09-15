@@ -1,0 +1,120 @@
+
+// By default, The width and height properties (and min/max properties) includes only the content. Border, padding, or margin are not included.
+// The width and height properties (and min/max properties) includes content, padding and border, but not the margin
+// We need to set box-model border-box globally for proper layouts and grids(!)
+// If you explicitly need to set the content-box model, call the mixin .content-box()
+* {
+	.border-box();
+}
+
+.container {
+	position: relative;
+	margin: 0 auto;
+
+	.row {
+		position: relative;
+		display: block;
+
+		// Self Clearing Awesomeness
+		&:after {
+			content: "\0020";
+			display: block;
+			height: 0;
+			clear: both;
+			visibility: hidden;
+		}
+
+		.col,
+		.cols {
+			float: left;
+			position: relative;
+			padding: 0;
+
+			&.no-spacing {
+				margin-bottom: 0;
+			}
+
+			&:last-of-type {
+				margin-right: 0;
+			}
+		}
+	}
+
+	// TODO: temporary commented
+	// Big Desktops
+	// -------------------------
+	//	@media @desktop-xl {
+	//		.generate-grid(@page-xl-width, @page-xl-gutter, @page-xl-row-spacing-bottom, @page-xl-border-width);
+	//	}
+
+	// Small Desktops
+	// -------------------------
+	@media @desktop-sm {
+		.generate-grid(@page-sm-width, @page-sm-gutter, @page-sm-row-spacing-bottom, @page-sm-border-width);
+	}
+
+	// Mobiles
+	// -------------------------
+	@media @mobile {
+		.generate-grid(@page-mobile-width, @page-mobile-gutter, @page-mobile-row-spacing-bottom, @page-mobile-border-width);
+	}
+
+	// Print Layout
+	// -------------------------
+	@media print {
+		.generate-grid(@page-sm-width, @page-sm-gutter, @page-sm-gutter, @page-mobile-border-width);
+	}
+}
+
+
+// Gird Generator
+// -------------------------
+.generate-grid(@width, @gutter, @row-spacing-bottom, @border-width) when (ispixel(@width)) {
+	@columns: 		12;
+	@column-width: 	((@width - @gutter) / @columns) - @gutter;
+
+	// we need to explicitly set box-sizing: content-box here! (http://youtrack.tfw.ag/issue/B-2637)
+	.content-box();
+	width: 			@width - (@gutter * 2);
+	padding: 		0 (@gutter - @border-width);
+	border: 		@border-width solid @page-border-color;
+	border-bottom-width: 0;
+
+	.row .col,
+	.row .cols {
+		// Spacing between columns
+		margin: 	0 @gutter @row-spacing-bottom 0;
+
+		&.one 		{ width: @column-width *  1 + (@gutter *  0) }
+		&.two 		{ width: @column-width *  2 + (@gutter *  1) }
+		&.three 	{ width: @column-width *  3 + (@gutter *  2) }
+		&.four 		{ width: @column-width *  4 + (@gutter *  3) }
+		&.five 		{ width: @column-width *  5 + (@gutter *  4) }
+		&.six 		{ width: @column-width *  6 + (@gutter *  5) }
+		&.seven 	{ width: @column-width *  7 + (@gutter *  6) }
+		&.eight 	{ width: @column-width *  8 + (@gutter *  7) }
+		&.nine 		{ width: @column-width *  9 + (@gutter *  8) }
+		&.ten 		{ width: @column-width * 10 + (@gutter *  9) }
+		&.eleven 	{ width: @column-width * 11 + (@gutter * 10) }
+		&.twelve 	{ width: @column-width * 12 + (@gutter * 11) }
+	}
+}
+
+.generate-grid(@width, @gutter, @row-spacing-bottom, @border-width) when (ispercentage(@width)) {
+	.border-box();
+
+	width: 			@width;
+	border: 		@border-width solid @page-border-color;
+	padding: 		0 @gutter;
+
+	.row .col,
+	.row .cols {
+		// Spacing between columns
+		width: 		@width;
+		margin: 	0 0 @row-spacing-bottom 0;
+
+		&.one, &.two, &.three, &.four, &.five, &.six, &.seven, &.eight, &.nine, &.ten, &.eleven, &.twelve {
+			width: 	@width;
+		}
+	}
+}

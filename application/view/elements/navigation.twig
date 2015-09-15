@@ -1,0 +1,21 @@
+<div class="row logo-wrapper">
+    <ul>
+        <li>
+            <a href="{{ base_url }}">
+                <img src="{{ base_url }}/images/logo.png" />
+            </a>
+        </li>
+        <li>
+            <nav id="main-navigation">
+                <ul>
+                    <li>
+                        <a{% if site == 'index' %} class="active"{% else %} href="/"{% endif %}>Start</a>
+                    </li>
+                    <li>
+                        <a{% if site == 'login' %} class="active"{% else %} href="/login"{% endif %}>Login</a>
+                    </li>
+                </ul>
+            </nav>
+        </li>
+    </ul>
+</div>

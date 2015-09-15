@@ -1,0 +1,247 @@
+// https://github.com/twbs/bootstrap/blob/master/less/variables.less
+
+// Colors
+// -------------------------
+@tf-white:			#FFFFFF;
+@tf-grey-superlight:#F8F8F8;
+@tf-grey1:			#EAEAEA;
+@tf-grey2:			#E1E1E1;
+@tf-grey3:			#CCCCCC;
+@tf-grey4:			#ADADAD;
+@tf-grey5:			#858585;
+@tf-yellow-badass:	#FCF5E1;
+@tf-yellow-hover:	#F0D271;
+@tf-yellow-logo:	#EABF35;
+@tf-beige:			#C4B485;
+@tf-brown-light:	#CF7A46;
+@tf-brown-dark:		#5F4C00;
+@tf-black:			#333333;
+@tf-blue-badass:	#F7FAFC;
+@tf-blue-logo:		#86B3D4;
+@tf-blue1:			#CDE0EE;
+@tf-blue2:			#ACCCE3;
+@tf-blue3:			#5A99C7;
+@tf-blue4:			#E6F0F7;
+@tf-blue-dark-logo: #004C77;
+@tf-green-badass:	#E4EFE5;
+@tf-green-logo:		#4A9152;
+@tf-green-border:	#6EA775;
+@tf-green-hover:	@tf-green-badass;
+@tf-green-light:	#9DC14E;
+@tf-red-badass:		#F4E5E7;
+@tf-red-dark:		#CD5E67;
+@tf-red-logo:		#C67D89;
+@tf-purple:			#836BD1;
+
+
+// Offer Type Colors
+// -------------------------
+@offer-color-1:		@tf-red-dark; 		// Last Minute
+@offer-color-2:		@tf-green-logo; 	// Early Bird
+@offer-color-3:		@tf-green-light; 	// Special Offer
+@offer-color-4:		@tf-yellow-logo; 	// Discount Offer
+@offer-color-5:		@tf-beige; 			// Group Offer
+@offer-color-6:		@tf-brown-light; 	// Short Trip
+
+
+// Images/Sprites
+// -------------------------
+@images: '/assets/_files/images';
+@sprites: '/assets/_files/sprites';
+@fonts: '/assets/_files/fonts';
+
+
+// Border Radius
+// -------------------------
+@main-border-radius: 2px;
+
+
+// Links
+// -------------------------
+@link-color:            @tf-blue3;
+@link-hover-color:      @tf-blue3;
+@link-color-dark:		@tf-black;
+@link-color-dark-hover:	@tf-black;
+
+
+// Typography
+// -------------------------
+@font-family-main:        Verdana, sans-serif;
+@font-family-sans-serif:  Helvetica, Arial, sans-serif;
+@font-family-serif:       Georgia, "Times New Roman", Times, serif;
+@font-family-monospace:   Menlo, Monaco, Consolas, "Courier New", monospace;
+
+@font-size-base:          14px;
+
+@font-size-tiny:       	  ceil(@font-size-base  * 0.70); // 10px
+@font-size-smaller:       ceil(@font-size-base  * 0.75); // 11px
+@font-size-small:         ceil(@font-size-base  * 0.85); // 12px
+@font-size-large:         floor(@font-size-base * 1.10); // 15px
+@font-size-larger:        floor(@font-size-base * 1.15); // 16px
+
+@font-size-h1:            floor(@font-size-base * 1.50); // 21px
+@font-size-h2:            floor(@font-size-base * 1.35); // 20px
+@font-size-h3:            floor(@font-size-base * 1.15); // 16px
+@font-size-h4:            floor(@font-size-base * 1.00); // 14px
+@font-size-h5:            ceil(@font-size-base  * 0.85); // 12px
+@font-size-h6:            ceil(@font-size-base  * 0.70); // 10px
+
+@font-color-main:		  @tf-black;
+
+@line-height-base:        1.428571429; // 20/14 -> 	http://stackoverflow.com/questions/19982651/why-bootstrap-set-property-line-height-to-1-428
+//		->  http://coding.smashingmagazine.com/2012/12/17/css-baseline-the-good-the-bad-and-the-ugly/
+@line-height-computed:    floor((@font-size-base * @line-height-base)); // 20px
+
+@headings-font-family:    inherit;
+@headings-font-weight:    bold;
+@headings-line-height:    @line-height-base;
+@headings-color:          inherit;
+
+
+// Form fields
+// ------------------------
+@form-field-background:	  		@tf-white;
+@form-field-border: 	  		@tf-blue-logo;
+@form-field-border-hover: 		darken(@tf-blue-logo, 20%);
+@form-field-border-error: 		@tf-red-dark;
+@form-field-border-error-hover: darken(@tf-red-dark, 20%);
+@form-field-height:		  		35px;
+@form-field-height-mobile: 		50px;
+@form-label-indentation:		2px;
+
+
+// Buttons
+// ------------------------
+@button-font-base:	      Verdana, sans-serif;
+@button-font-size-small:  12px;
+@button-font-size-medium: 14px;
+@button-font-size-large:  15px;
+@button-font-size-extreme:18px;
+
+@button-font-size-small-active:  	ceil(@button-font-size-small * 0.90);
+@button-font-size-medium-active: 	ceil(@button-font-size-medium * 0.90);
+@button-font-size-large-active:  	ceil(@button-font-size-large * 0.90);
+@button-font-size-extreme-active:	ceil(@button-font-size-extreme * 0.90);
+
+@button-height-base: 		30px;
+@button-height-small: 		20px;
+@button-height-large: 		35px;
+
+@button-padding:			0 @spacing-normal;
+@button-tablet-padding:		0 @spacing-tiny;
+@button-border-strength:	1px;
+@button-border-appearance:	solid;
+
+@button-weight-base:	  	bold;
+@button-hover-lighten:	  	9%;
+
+
+// Padding & Margin
+// ------------------------
+@spacing-base: 20px;
+
+@spacing-tiny: 			@spacing-base * 0.25; //  5px
+@spacing-small:			@spacing-base * 0.50; // 10px
+@spacing-normal:		@spacing-base * 0.75; // 15px
+@spacing-large:			@spacing-base;		  // 20px
+@spacing-huge: 			@spacing-base * 1.25; // 25px
+@spacing-colossal: 		@spacing-base * 1.50; // 30px
+@spacing-ginormous:		@spacing-base * 1.75; // 35px
+
+
+// Transitions
+// ------------------------
+@transition-base:		250ms;
+@transition-lightning:	@transition-base * 0.40; // 100ms
+@transition-fastest:	@transition-base * 0.60; // 150ms
+@transition-fast:		@transition-base * 0.80; // 200ms
+@transition-slow:		@transition-base * 1.40; // 350ms
+@transition-slowest:	@transition-base * 2.00; // 500ms
+
+
+// Icons
+// ------------------------
+@icon-size-base:		  18px;
+@icon-color-base:		  @tf-blue-logo;
+@icon-color-error:		  @tf-red-dark;
+@icon-hover-base:		  darken(@tf-blue-logo, 20%);
+@icon-hover-error:		  darken(@tf-red-dark, 20%);
+
+
+// Z-Index
+// ------------------------
+@z-index-negative:	      -1;
+@z-index-lower:		  	  1;
+@z-index-low:		  	  2;
+@z-index-base:			  1000;
+@z-index-development:	  9999;
+@z-index-tooltip:		  2000;
+@z-index-tooltip-extra:   @z-index-tooltip + 1;
+@z-index-page-overlay:    @z-index-base + 2000; 		//i.e. datepicker popup
+@z-index-po-extra: 		  @z-index-page-overlay + 1;
+@z-index-po-extreme:	  @z-index-page-overlay + 100; 	//i.e. userbar
+@z-index-view-overlay:	  @z-index-base + 3000; 		//i.e. modal popup background
+@z-index-vo-extra: 		  @z-index-view-overlay + 1; 	//i.e. modal popup dialog
+@z-index-vo-supreme: 	  @z-index-view-overlay + 2; 	//highest layer
+@z-index-vo-dialog:		  @z-index-view-overlay + 5;	//dialog should be on top of everything
+
+
+// Default Drop Shadow
+// ------------------------
+@default-shadow:			0px 0px 3px fade(@tf-black, 70%);
+@default-shadow-contrast:	0px 0px 1px fade(@tf-black, 70%); // used as thin text outline
+
+// Mobile Filter Dropshadow
+// -------------------------
+@mobile-filter-shadow:		0px 5px 7px fade(@tf-black, 70%);
+
+
+// Userbar
+// ------------------------
+@userbar-height:			45px;
+
+
+// Breakpoints
+// -------------------------
+@breakpoint-desktop-sm: @page-sm-width - 1px;
+@breakpoint-mobile: 	@page-tablet-width - 1px;
+
+// TODO: temporary commented
+//@desktop-xl: 	~"only screen and (min-width: @{page-xl-width})";
+//@desktop-sm: 	~"only screen and (min-width: @{page-sm-width}) and (max-width: @{page-xl-width})";
+@desktop-sm: 			~"only screen and (min-width: 768px)";
+@tablet: 				~"only screen and (min-width: 768px) and (max-width: 1023px)";
+@mobile: 				~"only screen and (max-width: 767px)";
+
+@portable:				~"only screen and (max-width: 1023px)";
+
+
+// Page Settings
+// -------------------------
+@page-border-color:					@tf-grey3;
+
+// Desktop xl
+@page-xl-width:						1220px;
+@page-xl-gutter:					30px;
+@page-xl-row-spacing-bottom:		30px;
+@page-xl-border-width:				1px;
+
+// Desktop sm
+@page-sm-width:						980px;
+@page-sm-gutter:					20px;
+@page-sm-row-spacing-bottom:		20px;
+@page-sm-border-width:				1px;
+// Tablet
+@page-tablet-width:					768px;
+@page-tablet-gutter:				20px;
+@page-tablet-row-spacing-bottom:	20px;
+@page-tablet-border-width:			1px;
+// Mobile
+@page-mobile-width:					100%;
+@page-mobile-gutter:				20px;
+@page-mobile-row-spacing-bottom:	0px;
+@page-mobile-border-width:			0px;
+
+
+//Headings - No margin
+@no-heading-margin: 			0px;

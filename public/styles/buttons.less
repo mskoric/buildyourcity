@@ -1,0 +1,154 @@
+.tf-button {
+	.font-smoothing();
+	.border-radius(@main-border-radius);
+	.transition(all @transition-lightning ease);
+	font-size: @button-font-size-small;
+	font-weight: @button-weight-base;
+	font-family: @button-font-base;
+	background: @tf-green-logo;
+	padding: @button-padding;
+	color: @tf-white;
+	height: @button-height-base;
+	line-height: @button-height-base;
+	border: @button-border-strength @button-border-appearance @tf-green-logo;
+	display: inline-block;
+	text-decoration: none;
+	text-align: center;
+
+	// Inner Buttons Icons
+	// ----------------------------------------------
+
+	i {
+		margin-right: @spacing-tiny;
+	}
+
+	// Button Standard Behaviour
+	// ----------------------------------------------
+	&:hover {
+		background: lighten(@tf-green-logo, @button-hover-lighten);
+		text-decoration: none;
+	}
+
+	&:focus {
+		outline: 0;
+		/* or */
+		outline: none;
+		.box-shadow(0 0 0 0 #fff);
+	}
+
+	// Button Shapes
+	// ----------------------------------------------
+	&.small {
+		height:			@button-height-small;
+		line-height:	@button-height-small;
+		font-size:		@button-font-size-small;
+	}
+
+	&.large {
+		height:			@button-height-large;
+		line-height:	@button-height-large;
+		font-size:		@button-font-size-large;
+	}
+
+	&.huge {
+		height:			@button-height-large;
+		line-height:	@button-height-large;
+		font-size:		@button-font-size-extreme;
+	}
+
+	&.full-width {
+		display: block;
+	}
+
+	&.flexible {
+		min-height: @button-height-base;
+		font-size:	@button-font-size-large;
+		height: auto;
+		line-height: normal;
+		padding: @spacing-tiny @spacing-small;
+	}
+
+	&.disabled {
+		.opacity(0.5);
+	}
+
+	// Button Colors
+	// ----------------------------------------------
+	&.yellow {
+		.setButtonAppearance(@tf-yellow-logo, @tf-yellow-logo, @tf-black, lighten(@tf-yellow-logo, @button-hover-lighten), @tf-black);
+	}
+
+	&.green {
+		.setButtonAppearance(@tf-green-logo, @tf-green-logo, @tf-white, lighten(@tf-green-logo, @button-hover-lighten), @tf-white);
+	}
+
+	&.blue {
+		.setButtonAppearance(@tf-blue-logo, @tf-blue-logo, @tf-white, lighten(@tf-blue-logo, @button-hover-lighten), @tf-white);
+	}
+
+	&.white-blue {
+		.setButtonAppearance(@tf-white, @tf-blue-logo, @tf-blue-logo, lighten(@tf-white, @button-hover-lighten), @tf-blue-logo);
+	}
+
+	&.grey {
+		.setButtonAppearance(@tf-grey2, @tf-grey2, @tf-black, lighten(@tf-grey2, @button-hover-lighten), @tf-black);
+	}
+
+	&.white {
+		.setButtonAppearance(@tf-white, @tf-grey3, @tf-black, darken(@tf-white, @button-hover-lighten), @tf-black);
+	}
+
+	// Button Tablet Styles
+	// ----------------------------------------------
+	@media @tablet {
+		padding: @button-tablet-padding;
+
+		&.huge {
+			font-size: @font-size-small;
+		}
+
+		&.flexible {
+			font-size: @font-size-small;
+			padding: @spacing-tiny 0;
+		}
+	}
+
+	// Button Mobile Styles
+	// ----------------------------------------------
+	@media @mobile {
+		.transition(all 0ms linear);
+		display: block;
+		width: 100%;
+
+		&:active {
+			.transform(scaleY(0.95) scaleX(0.95));
+		}
+
+		&.disabled:active {
+			.transform(scaleY(1) scaleX(1));
+		}
+	}
+}
+
+
+// Mixin to create several button appearances
+// ----------------------------------------------
+.setButtonAppearance(@button-background-color, @button-border-color, @button-text-color, @button-hover-color, @button-hover-text-color) {
+	background: @button-background-color;
+	border-color: @button-border-color;
+	color: @button-text-color;
+
+	&:hover {
+		background: @button-hover-color;
+		color: @button-hover-text-color;
+	}
+
+	&:active {
+		background: @button-hover-color;
+		color: @button-hover-text-color;
+	}
+
+	&.disabled:hover {
+		background: @button-background-color;
+	}
+}

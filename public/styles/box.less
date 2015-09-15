@@ -1,0 +1,43 @@
+.box {
+	.border-radius(@main-border-radius);
+	.perfect-box-spacing();
+	position: relative;
+	padding: @spacing-normal;
+	border: 1px solid @tf-blue-logo;
+	background: @tf-blue-badass;
+
+	&.outer {
+		padding: @spacing-large;
+	}
+
+	&.yellow {
+		border: 1px solid @tf-yellow-logo;
+		background: @tf-yellow-badass;
+	}
+
+	&.white {
+		border: 1px solid @tf-grey3;
+		background: @tf-white;
+	}
+
+	&.grey {
+		border: 1px solid @tf-grey3;
+		background: @tf-grey-superlight;
+	}
+
+	&.image {
+		padding-top: @spacing-normal;
+		padding-bottom: @spacing-normal;
+		padding-left: 0;
+		padding-right: 0;
+		overflow: hidden;
+
+		> img {
+			width: 100%;
+		}
+	}
+
+		&.has-margin-bottom {
+		margin-bottom: @spacing-large;
+	}
+}
